@@ -1,0 +1,12 @@
+{% macro render_messages(messages) %}
+<div id="messages">
+                
+    <ul class="flashes">
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+                
+</div>
+
+{% endmacro %}

@@ -9,17 +9,14 @@
         <h3>Blog Admin</h3>
             {% with messages = get_flashed_messages() %}
             {% if messages %}
-            <div id="messages">
-                
-                <ul class="flashes">
-                    {% for message in messages %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-                
-            </div>
+            {% from "_sitehelpers.html" import render_messages %}
+                {{ render_messages(messages) }}
             {% endif %}
             {% endwith %} 
+            
+            <p>
+               Welcome, {{ session.username }} - click <a href="{{ url_for('logout') }}">here</a> to log out.
+            </p>
     </div>
     
 </div>

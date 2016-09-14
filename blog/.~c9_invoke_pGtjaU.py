@@ -59,7 +59,5 @@ class Category(db.Model):
         self.name = name
         
     def __repr__(self):
-        return '<Category: {}>'.format(self.name)
-        
-    def __str__(self):
-        return self.name
+        return 'self.name)
+

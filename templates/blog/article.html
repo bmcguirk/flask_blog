@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Blog Title{% endblock title %}
+
+{%block content %}
+
+{% filter markdown %}
+# Filter Markdown Test
+
+1. Test bullet 1.
+1. Test bullet 2.
+1. Test bullet 3. 
+
+{% endfilter %}
+
+{% endblock content %}

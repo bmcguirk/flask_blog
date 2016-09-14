@@ -57,3 +57,8 @@ def setup():
         flash("Blog and author created.")
         return redirect(url_for('admin'))
     return render_template('blog/setup.html', form=form, error=error)
+    
+@app.route('/post')
+@login_required
+def post():
+    return "Blog Post"

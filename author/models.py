@@ -1,3 +1,5 @@
+# Author Models
+
 from flask_blog import db
 
 class Author(db.Model):
@@ -16,4 +18,4 @@ class Author(db.Model):
         self.is_author = is_author
         
     def __repr__(self):
-        return '<Author> {}'.format(self.username)
+        return '<Author - {}>'.format(self.username)

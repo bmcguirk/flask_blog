@@ -27,7 +27,7 @@ def login():
                     session.pop('next')
                     return redirect(next)
                 else:
-                    return redirect(url_for('login_success'))
+                    return redirect(url_for('index'))
             else:
                 error = "Can't find that username/password combo."
         else:
@@ -40,15 +40,10 @@ def login():
 def register():
     form = RegisterForm()
     if form.validate_on_submit():
-        return redirect(url_for('success'))
+        return redirect(url_for('login_success'))
     else:
         return render_template('author/register.html', form=form)
         
-@app.route('/success')
-def success():
-    return "Author registered."
-
-
 @app.route('/login_success')
 @login_required
 def login_success():
@@ -58,4 +53,5 @@ def login_success():
 @app.route('/logout')
 def logout():
     session.pop('username')
+    session.pop('is_author')
     return redirect(url_for('index'))

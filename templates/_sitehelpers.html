@@ -10,3 +10,28 @@
 </div>
 
 {% endmacro %}
+
+{% macro render_list_summary(posts, context) %}
+<div class="post-list">
+    {% for post in posts.items %}
+    <div class="post-item">
+        <h4><a href="{{ url_for('article', slug=post.slug) }}">{{ post.title }}</a></h4>
+        <div class="text-muted">Posted by <a href="#">{{ post.author.fullname }}</a> 
+        on {{ post.publish_date.strftime('%Y-%m-%d') }}</div>
+        in <a href="#">{{ post.category.name }}</a>.
+    </div>
+    {% endfor %}
+    <div class="post-paginate">
+        {% if posts.has_prev %}
+            <a href="{{url_for(context, page=posts.prev_num) }}">&lt;&lt; Newer Posts</a>
+            {% else %}
+            &lt;&lt; Newer Posts
+        {% endif %} | 
+        {% if posts.has_next %}
+            <a href="{{url_for(context, page=posts.next_num) }}">Older Posts &gt;&gt; </a>
+        {% else %}
+            &gt;&gt; Older Posts
+        {% endif %}
+    </div>
+</div>
+{% endmacro %}

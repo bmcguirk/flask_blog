@@ -7,17 +7,9 @@
 <div class="row">
     
     <div class="col-md-offset-3 col-md-6">
-        <h1>{{blog.name}}</h1>
-        <div class="post-list">
-            {% for post in posts %}
-            <div class="post-item">
-                <h4><a href="{{ url_for('article', slug=post.slug) }}">{{ post.title }}</a></h4>
-                <div class="text-muted">Posted by <a href="#">{{ post.author.fullname }}</a> 
-                on {{ post.publish_date.strftime('%Y-%m-%d') }}</div>
-                in <a href="#">{{ post.category.name }}</a>.
-            </div>
-            {% endfor %} 
-        </div>
+        <h1><a href="{{ url_for('index') }}">{{blog.name}}</a></h1>
+        {% from "_sitehelpers.html" import render_list_summary %}
+                {{ render_list_summary(posts, 'index') }}
         
     </div>
 

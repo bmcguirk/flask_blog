@@ -6,7 +6,7 @@
     
     <div class="col-md-offset-3 col-md-6">
         
-        <h3>Blog Admin</h3>
+        <h3><a href="{{ url_for('admin')}}">Blog Admin</a></h3>
             {% with messages = get_flashed_messages() %}
             {% if messages %}
             {% from "_sitehelpers.html" import render_messages %}
@@ -17,16 +17,10 @@
             <p>
                Welcome, {{ session.username }} - click <a href="{{ url_for('logout') }}">here</a> to log out.
             </p>
-        <div class="post-list">
             
-            {% for post in posts %}
-            <div class="post-item">
-                <h4><a href="{{ url_for('article', slug=post.slug) }}">{{ post.title }}</a></h4>
-                <div class="text-muted">Posted by <a href="#">{{ post.author.fullname }}</a> 
-                on {{ post.publish_date.strftime('%Y-%m-%d') }}</div>
-                in <a href="#">{{ post.category.name }}</a>.
-            </div>
-            {% endfor %}
+            {% from "_sitehelpers.html" import render_list_summary %}
+                {{ render_list_summary(posts, 'admin') }}
+
         </div>
         
     </div>

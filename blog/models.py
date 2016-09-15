@@ -31,7 +31,7 @@ class Post(db.Model):
     publish_date = db.Column(db.DateTime)
     live = db.Column(db.Boolean)
     
-    
+    category = db.relationship('Category', backref=db.backref('posts', lazy='dynamic'))
     
     def __init__(self, blog, author, title, body, category, slug=None, publish_date=None, live=True):
         self.blog_id = blog.id
